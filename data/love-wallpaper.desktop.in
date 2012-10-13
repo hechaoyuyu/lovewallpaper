@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Lovewallpaper
+_Comment=Find your Wallpaper
+Exec=love-wallpaper
+Icon=love-wallpaper
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;KDE;QT
+StartupNotify=true
+X-Ayatana-Desktop-Shortcuts=Overview;
+X-Ayatana-Appmenu-Show-Stubs=False
+
+[Overview Shortcut Group]
+_Name=Overview
+Exec=love-wallpaper
+TargetEnvironment=Unity

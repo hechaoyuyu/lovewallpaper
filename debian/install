@@ -1,0 +1,5 @@
+lovewallpaper /usr/share/pyshared
+lovewallpaper /usr/lib/python2.7/dist-packages
+love-wallpaper /usr/bin
+data/love-wallpaper.desktop /usr/share/applications
+data/love-wallpaper.png /usr/share/icons

@@ -1,0 +1,24 @@
+Source: lovewallpaper
+Section: utils
+Priority: optional
+Maintainer: kevinzhow <kevinchou.c@gmail.com>
+Build-Depends: debhelper (>= 7.3),
+ intltool,
+ dh-translations,
+ python-central (>= 0.5.6),
+ python-dev,
+ python-setuptools,
+ python-distutils-extra
+Standards-Version: 1.5.0
+Homepage: http://lovebizhi.com
+
+Package: lovewallpaper
+Architecture: all
+Depends: python-apt,
+ python-notify,
+ python-pyside,
+ xdotool,
+ ${misc:Depends},
+ ${python:Depends}
+Description: Lovewallpaper
+ Lovewallpaper is an application for users to find and set wallpaper for their desktop.We have over 500000 wallpapers in diffrent kinds.

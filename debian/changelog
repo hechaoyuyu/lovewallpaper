@@ -1,0 +1,16 @@
+lovewallpaper (1.5.2-0) precise; urgency=low
+
+  * bug fixes, offine mode
+  * Thanks to AVASTMS for SUSE hack ^^
+    
+ -- kevinzhow <kevinchou.c@gmail.com>  Sun, 23 Sep 2012 11:36:18 +0800
+ 
+lovewallpaper (1.5.1-0) precise; urgency=low
+
+  * bug fixes, KDE fix, Widnow detactive bug fix
+    
+ -- kevinzhow <kevinchou.c@gmail.com>  Thur, 30 Aug 2012 07:36:18 +0800
+lovewallpaper (1.5.0-0~precise1) precise; urgency=low
+  * 1.5 release
+
+ -- kevinzhow <kevinchou.c@gmail.com>  Mon, 13 Aug 2012 07:36:18 +0800

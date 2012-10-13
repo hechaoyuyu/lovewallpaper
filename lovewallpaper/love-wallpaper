@@ -1,0 +1,94 @@
+#!/usr/bin/python2
+# -*- coding: utf-8 -*-
+import sys
+import os
+from PySide.QtCore import *
+from PySide.QtGui import *
+from PySide import QtDeclarative
+import thread
+import ConfigParser
+
+# Changed  By avastms@ghostunix.org , due to the disguise of the PRIVATE part of love-wallpaper
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+if os.path.exists("/tmp/lovewallpaper") :
+	pass
+else :
+	os.system( "mkdir -p /tmp/lovewallpaper" )
+os.system( "cp ./lib/jsonman.NON_OSS /tmp/lovewallpaper/jsonman.pyc" )
+sys.path.append("/tmp/lovewallpaper")
+sys.path.append("./lib")
+
+from main import LoveWallpaper 
+        
+if __name__ == '__main__':
+    # Create the Qt Application
+    app = QApplication(sys.argv)
+
+    # translator = QTranslator()
+    # translator.load('lovewallpaper/i18n/en_GB.qm')
+    # app.installTranslator(translator)
+
+
+    import time
+    usr_home = os.path.expanduser('~')
+    # cf.set("Path", "download", usr_home+'/Wallpaper/')
+    
+    if os.path.exists("%s/.config/lovewallpaper/config"%(usr_home)) and  os.path.exists("%s/.config/lovewallpaper/splash/timeset"%(usr_home)) :
+        print "Config exist"
+    else:
+         os.system( "mkdir -p %s/.config/lovewallpaper/splash"%(usr_home))
+# SUSE does NOT use /usr/share/pyshared , file dir is different. I have made changes to make this work on relative dir. see top.
+         os.system( "cp ./config %s/.config/lovewallpaper"%(usr_home))
+         os.system( "cp ./splash/timeset %s/.config/lovewallpaper/splash"%(usr_home))
+        # cf.write(open("config", "w"))
+    cf = ConfigParser.ConfigParser()
+    usr_home = os.path.expanduser('~') + "/.config/lovewallpaper"
+
+    try:
+        cf.read("%s/splash/timeset"%(usr_home))
+        print time.time()
+
+        if (time.time() > int(cf.get("Times", "first")) ) and (time.time() < int(cf.get("Timee", "first")) ):
+            print "show 1"
+            pixmap = QPixmap(QImage( ("%s/splash/splash1.jpg")%(usr_home) ))
+        elif (time.time() > int(cf.get("Times", "second")) ) and (time.time() < int(cf.get("Timee", "second")) ):
+            print "show 2"
+            pixmap = QPixmap(QImage( ("%s/splash/splash2.jpg")%(usr_home) ))
+        else: 
+            pixmap = QPixmap(QImage("./lovewallpaper/splash/splash.jpg"))
+    except Exception, e:
+         pixmap = QPixmap(QImage("/usr/share/pyshared/lovewallpaper/splash/splash.jpg"))
+        # usr_home = os.path.expanduser('~')
+
+        # os.system( "mkdir %s/Wallpaper "%(usr_home))
+
+
+    
+    splash = QSplashScreen(pixmap)
+    splash.show()
+    splash.showMessage("Loaded modules")
+    app.processEvents()
+    # Create and show the form
+    main = LoveWallpaper(None,app)
+
+    main.setCentralWidget(main.create_view())
+
+    main.show()
+    try:
+        if main.ToOffine:
+            main.userimage_clicked()
+    except Exception, e:
+        print "Cannot go to Offine mode"
+
+
+    splash.finish(main)
+
+    try:
+        thread.start_new_thread(main.My_JsonMan.versionCheck,(main.My_JsonMan.newversion,))
+    except Exception, e:
+        print "Get version fault"
+    
+
+    # Run the main Qt loop
+    sys.exit(app.exec_())

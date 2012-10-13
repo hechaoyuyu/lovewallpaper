@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sun Sep 23 11:36:18 CST 2012 - kevinchou.c@gmail.com
+
+- version 1.5.2
+ *bug fixes, offine mode
+ *merge changes made by avastms.
+ 
+-------------------------------------------------------------------
+Sat Sep 22 15:46:02 UTC 2012 - avastms@ghostunix.org
+
+- necessary change in source code due to change of install dir
+
+-------------------------------------------------------------------
+Sat Sep 22 05:55:38 UTC 2012 - i@marguerite.su
+
+- fix install dir.
+  * openSUSE use %{python_sitelib} instead of pyshared.
+  * fix spec
+- clean source
+- no Chinese changelog.
+
+-------------------------------------------------------------------
+Fri Sep 21 06:20:36 UTC 2012 - avastms@ghostunix.org
+
+-1.5.1 Open Source
+ *open source everything except the wallpaper server API, provides .py
+ *imporve .desktop file
+ *link repeated files
+ *tweak some module to make propiretary module works with open source ones.
+
+-------------------------------------------------------------------
+Wed Sep 19 21:32:20 CST 2012 -  info@lovebizhi.com
+
+-1.5.1 Version
+ *add support for XFCE DE
+ *fix the multi-screen width/height bug
+ *fix program flash error
+ *fix KDE path bug
+ *other improvements
+-1.5 Version
+ *rewrite based on PySide, redesign UI and effects
+ *support plugins. increase KDE 4.5 support to 4.8 (need xdotool)
+ 
+-------------------------------------------------------------------
+2012-8-26 kevinzhow <kevinchou.c@gmail.com>
+ *new version 1.5
