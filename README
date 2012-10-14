@@ -18,3 +18,8 @@ All rights reserved.
 How to build & test
 ========================
 sudo python setup.py install
+
+制作Deb包
+========================
+在源码根目录里执行dpkg-buildpackage -b即可得到deb
+
