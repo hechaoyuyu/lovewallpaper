@@ -1,3 +1,8 @@
+lovewallpaper (1.5.3-0) precise; urgency=low
+  * Merge StartOS Team patch about StartOS and KDE Support
+ -- kevinzhow <kevinchou.c@gmail.com>  Sun, 23 Sep 2012 11:36:18 +0800
+
+
 lovewallpaper (1.5.2-0) precise; urgency=low
 
   * bug fixes, offine mode
