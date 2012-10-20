@@ -70,7 +70,7 @@ class SettingUI(QWidget, Ui_Settings):
 
         self.path_line.setText(text.decode('utf-8'))
 
-        self.platform_list = ["Gnome", "KDE", "XFCE"]
+        self.platform_list = ["Gnome", "KDE", "XFCE","Mac"]
 
         self.platform_model = DataModel(self.platform_list)
 

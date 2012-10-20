@@ -33,6 +33,8 @@ class Manager:
             from Plugin.Gnome import WallpaperSetter, AutoSlide
         elif platform == "XFCE":
             from Plugin.Xfce import WallpaperSetter, AutoSlide
+        elif platform == "Mac":
+            from Plugin.Mac import WallpaperSetter, AutoSlide
         else:
             try:
                     if os.environ['KDE_FULL_SESSION'] == 'true':
