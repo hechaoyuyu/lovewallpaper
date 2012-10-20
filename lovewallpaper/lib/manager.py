@@ -1,23 +1,7 @@
 # -*- coding: utf-8 -*-
-
-
 import ConfigParser
 import urllib2
 import os
-try:
-        if os.environ['KDE_FULL_SESSION'] == 'true':
-            from Plugin.KDE import  WallpaperSetter, AutoSlide
-except Exception, e:
-            try:
-                if os.environ['XDG_CURRENT_DESKTOP'] == 'XFCE':
-                    from Plugin.Xfce import WallpaperSetter, AutoSlide
-                elif  os.environ['XDG_CURRENT_DESKTOP'] == 'Pantheon':
-                    from Plugin.Gnome import WallpaperSetter, AutoSlide
-                else:
-                    from Plugin.Gnome import WallpaperSetter, AutoSlide
-            except Exception, e:
-                 from Plugin.Gnome import WallpaperSetter, AutoSlide
-
 try:
     import pynotify
 except:
@@ -31,17 +15,39 @@ class Manager:
             pynotify.init("LoveWallpaperHD")
         except:
             print "done"
-
-
-
-
         #初始化读取    
         self._cf = ConfigParser.ConfigParser()
         self.usr_home = os.path.expanduser('~') + "/.config/lovewallpaper"
         self._cf.read("%s/config"%(self.usr_home))
         #获取下载路径
         self.download_path = self._cf.get("Path", "Download") 
-        # print self.download_path
+        self.palform =  self._cf.get("Config", "platform") 
+        self.loadPlugin(self.palform)
+
+    
+    def loadPlugin(self, platform):
+
+        if platform == "KDE":
+            from Plugin.KDE import WallpaperSetter, AutoSlide
+        elif platform == "Gnome":
+            from Plugin.Gnome import WallpaperSetter, AutoSlide
+        elif platform == "XFCE":
+            from Plugin.Xfce import WallpaperSetter, AutoSlide
+        else:
+            try:
+                    if os.environ['KDE_FULL_SESSION'] == 'true':
+                        from Plugin.KDE import  WallpaperSetter, AutoSlide
+            except Exception, e:
+                        try:
+                            if os.environ['XDG_CURRENT_DESKTOP'] == 'XFCE':
+                                from Plugin.Xfce import WallpaperSetter, AutoSlide
+                            elif  os.environ['XDG_CURRENT_DESKTOP'] == 'Pantheon':
+                                from Plugin.Gnome import WallpaperSetter, AutoSlide
+                            else:
+                                from Plugin.Gnome import WallpaperSetter, AutoSlide
+                        except Exception, e:
+                             from Plugin.Gnome import WallpaperSetter, AutoSlide
+                # print self.download_path
         self.Setter = WallpaperSetter()
         self.AutoSlider = AutoSlide()
 

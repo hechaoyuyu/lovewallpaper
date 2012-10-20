@@ -117,27 +117,28 @@ QTabBar::tab:selected, QTabBar::tab:hover {
          <string>常规设置</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_8">
-         <item row="1" column="1">
-          <spacer name="verticalSpacer_2">
+         <item row="2" column="1">
+          <widget class="QListView" name="paltformlistView">
+           <property name="gridSize">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <spacer name="horizontalSpacer_7">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>20</width>
-             <height>40</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
           </spacer>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_20">
-           <property name="text">
-            <string>您可参照Plugin下的Gnome示例来编写支持自己桌面环境的脚本
-同时欢迎您把关于您的桌面环境的脚本反馈给我们
-我们会在新版中集成</string>
-           </property>
-          </widget>
          </item>
          <item row="0" column="1">
           <layout class="QGridLayout" name="gridLayout">
@@ -219,18 +220,12 @@ QTabBar::tab:selected, QTabBar::tab:hover {
            </item>
           </layout>
          </item>
-         <item row="0" column="3">
-          <spacer name="horizontalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_20">
+           <property name="text">
+            <string>请在下面列表中选择您的桌面环境</string>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
+          </widget>
          </item>
         </layout>
        </widget>

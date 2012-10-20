@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'settings.ui'
 #
-# Created: Sat Oct 20 19:47:56 2012
+# Created: Sat Oct 20 20:11:44 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -77,6 +77,7 @@ class Ui_Settings(object):
         self.gridLayout_8 = QtGui.QGridLayout(self.tab)
         self.gridLayout_8.setObjectName("gridLayout_8")
         self.paltformlistView = QtGui.QListView(self.tab)
+        self.paltformlistView.setGridSize(QtCore.QSize(0, 20))
         self.paltformlistView.setObjectName("paltformlistView")
         self.gridLayout_8.addWidget(self.paltformlistView, 2, 1, 1, 1)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
