@@ -15,7 +15,8 @@ class WallpaperSetter:
         pass
 
     def setWallpaper(self, path, key):
-        f = path + key
+        f = path + key+".jpg"
+        print "defaults write com.apple.desktop Background '{default = {ImageFilePath =\"" + f + "\"; }; }'; killAll Dock; "
         os.system("defaults write com.apple.desktop Background '{default = {ImageFilePath =\"" + f + "\"; }; }'; killAll Dock; ")
 
     def puresetWallpaper(self, url):
@@ -40,4 +41,6 @@ class AutoSlide:
         mymax = len(files) - 1
         num = random.randint(0,mymax)
         wallpeper = files[num] 
-        app('Finder').desktop_picture.set(mactypes.File(wallpeper))
+        f = wallpeper
+        print "defaults write com.apple.desktop Background '{default = {ImageFilePath =\"" + f + "\"; }; }'; killAll Dock; "
+        os.system("defaults write com.apple.desktop Background '{default = {ImageFilePath =\"" + f + "\"; }; }'; killAll Dock; ")
