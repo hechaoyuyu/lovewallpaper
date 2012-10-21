@@ -7,7 +7,10 @@ import os
 from lib.manager import Manager
 from jsonman import JsonMan
 from lib.VERSION import __VERSION__
-
+try:
+    import pynotify
+except:
+    print "No model"
 
 #Define the ListModel
 class DataModel (QAbstractListModel):
@@ -34,7 +37,10 @@ class SettingUI(QWidget, Ui_Settings):
     """docstring for SettingUI"""
     def __init__( self , parent = None ):
         super( SettingUI , self ).__init__(parent)
-
+        try:
+            pynotify.init("LoveWallpaperHD")
+        except:
+            print "done"
         self.setupUi(self)
 
         self.setStyleSheet("QToolBar {background-color:#b60400; border-bottom:2px solid #b60400}")
@@ -82,6 +88,11 @@ class SettingUI(QWidget, Ui_Settings):
         platform = self.platform_list[indexes.row()]
         self.cf.set("Config", "platform", platform)
         self.cf.write(open("%s/config" % (self.usr_home), "w"))
+        try:
+            n = pynotify.Notification("爱壁纸HD", "好啦，我已经记住了的桌面环境")
+            n.show()
+        except:
+            print "False"
 
     def limittext(self):
         if len(self.feedbackTextEdit.toPlainText()) < 500:

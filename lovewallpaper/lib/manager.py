@@ -21,7 +21,12 @@ class Manager:
         self._cf.read("%s/config"%(self.usr_home))
         #获取下载路径
         self.download_path = self._cf.get("Path", "Download") 
-        self.palform =  self._cf.get("Config", "platform") 
+        try:
+            self.palform =  self._cf.get("Config", "platform") 
+        except:
+            self.palform =  self._cf.set('Config', 'platform', '')
+            self._cf.write(open("%s/config" % (self.usr_home), "w"))
+        
         self.loadPlugin(self.palform)
 
     
@@ -77,7 +82,7 @@ class Manager:
             except:
                 print "No model"
             return False
-            
+
 
     def setWallpaper(self, key, url):
             self._reload()
@@ -93,7 +98,7 @@ class Manager:
                     n.show()
                 except:
                     print "False"
-               
+
             finally:
                 return True
 
@@ -108,13 +113,7 @@ class Manager:
         print "path is " + self.download_path
         for p,d,f in os.walk(self.download_path):
             for myfile in f:
-                
                 if myfile.split(".")[-1].lower() in self.format:
-                    self.files.append(os.path.join(p,myfile))
+                    self.files.append(os.path.join(p, myfile))
         print self.files
         return self.files
-
-
-        
-        
-        
