@@ -16,25 +16,16 @@ class WallpaperSetter:
         pass
 
     def setWallpaper(self, path, key):
-        try:
-            os.system( "gsettings set org.gnome.desktop.background picture-uri \"file://%s/%s.jpg\""%(path, key))
-        except Exception, e:
-            os.system(  "gconftool-2 --type=string --set /desktop/gnome/background/picture_filename %s/%s.jpg"  %(path, key))
+        os.system( "gsettings set org.gnome.desktop.background picture-uri \"file://%s/%s.jpg\""%(path, key))
 
     
     def puresetWallpaper(self, url):
-        try:
-            os.system( "gsettings set org.gnome.desktop.background picture-uri \"file://%s\""%(url))
-        except Exception, e:
-            os.system(  "gconftool-2 --type=string --set /desktop/gnome/background/picture_filename %s"  %(url))
+        os.system( "gsettings set org.gnome.desktop.background picture-uri \"file://%s\""%(url))
 
 
 class AutoSlide:
     """docstring for AutoSlide"""
     def BeginSlide(self, files,time):
-
-        print "Files"
-        print files
 
         doc = Document()
 
@@ -153,6 +144,4 @@ class AutoSlide:
         wallpeper = files[num] 
 
         os.system("gsettings set org.gnome.desktop.background picture-uri 'file:///"+wallpeper+"'")
-
-            
 
