@@ -59,12 +59,22 @@ if __name__ == '__main__':
             pixmap = QPixmap(QImage("./lovewallpaper/splash/splash.jpg"))
     except Exception, e:
          pixmap = QPixmap(QImage("/usr/share/pyshared/lovewallpaper/splash/splash.jpg"))
-        # usr_home = os.path.expanduser('~')
-
-        # os.system( "mkdir %s/Wallpaper "%(usr_home))
 
 
-    
+    #if is the first time user open this app, create folder
+    download_path_cf = ConfigParser.ConfigParser()
+    download_path_cf.read("%s/config"%(usr_home))
+    download_path = download_path_cf.get("Path", "Download") 
+    if download_path == "":
+        temp_usr_home = os.path.expanduser('~')
+        initdownload_folder = os.path.join(temp_usr_home, "Wallpaper")
+        if os.path.exists(initdownload_folder):
+            print "Wallpaper exists!"
+        else:
+            os.makedirs(initdownload_folder)
+    else:
+        print "User has made a choice!"
+
     splash = QSplashScreen(pixmap)
     splash.show()
     splash.showMessage("Loaded modules")
