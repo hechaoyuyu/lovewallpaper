@@ -2,6 +2,7 @@
 import ConfigParser
 import urllib2
 import os
+import sys
 try:
     import pynotify
 except:
@@ -27,21 +28,39 @@ class Manager:
             self.palform =  self._cf.set('Config', 'platform', '')
             self._cf.write(open("%s/config" % (self.usr_home), "w"))
         
+	if not self.palform:
+	    self.palform = self.getPlatform()
         self.loadPlugin(self.palform)
 
+    def getPlatform(self):
     
+    	#判断MacOS
+    	if sys.platform in ('mac', 'darwin'):
+            return "Mac"
+        
+	#判断桌面环境
+    	plaform = os.environ.get("DESKTOP_SESSION")
+    	if plaform == "gnome":
+	    return "Gnome"
+	elif plaform == "kde-plasma":
+	    return "KDE"
+	elif plaform == "xfce":
+	    return "XFCE"
+	else:
+	   return "Gnome-shell"
+
     def loadPlugin(self, platform):
 
         if platform == "KDE":
             from Plugin.KDE import WallpaperSetter, AutoSlide
-        elif platform == "Gnome":
-            from Plugin.Gnome import WallpaperSetter, AutoSlide
+        elif platform == "Gnome-shell":
+            from Plugin.GnomeShell import WallpaperSetter, AutoSlide
         elif platform == "XFCE":
             from Plugin.Xfce import WallpaperSetter, AutoSlide
         elif platform == "Mac":
             from Plugin.Mac import WallpaperSetter, AutoSlide
-        elif platform == "StartOS":
-            from Plugin.StartOS import WallpaperSetter, AutoSlide
+        elif platform == "Gnome":
+            from Plugin.Gnome import WallpaperSetter, AutoSlide
         else:
             try:
                     if os.environ['KDE_FULL_SESSION'] == 'true':
