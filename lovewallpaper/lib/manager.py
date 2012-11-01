@@ -44,7 +44,7 @@ class Manager:
 	    return "Gnome"
 	elif plaform == "kde-plasma":
 	    return "KDE"
-	elif plaform == "xfce4":
+	elif plaform in ("xfce4", "xfce"):
 	    return "XFCE"
 	else:
 	   return "Gnome-shell"
