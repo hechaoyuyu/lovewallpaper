@@ -19,11 +19,11 @@ class WallpaperSetter:
         pass
 
     def setWallpaper(self, path, key):
-        os.system(  "mateconftool-2 --type=string --set /desktop/gnome/background/picture_filename %s/%s.jpg"  %(path, key))
+        os.system(  "mateconftool-2 --type=string --set /desktop/mate/background/picture_filename %s/%s.jpg"  %(path, key))
 
 
     def puresetWallpaper(self, url):
-        os.system(  "mateconftool-2 --type=string --set /desktop/gnome/background/picture_filename %s"  %(url))
+        os.system(  "mateconftool-2 --type=string --set /desktop/mate/background/picture_filename %s"  %(url))
 
 
 class AutoSlide:
@@ -43,4 +43,4 @@ class AutoSlide:
         num = random.randint(0,mymax)
         wallpeper = files[num] 
 
-        os.system(  "mateconftool-2 --type=string --set /desktop/gnome/background/picture_filename %s"  %(wallpeper))
+        os.system(  "mateconftool-2 --type=string --set /desktop/mate/background/picture_filename %s"  %(wallpeper))
