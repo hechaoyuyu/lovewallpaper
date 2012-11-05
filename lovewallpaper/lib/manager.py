@@ -56,7 +56,8 @@ class Manager:
     	return status
 
     def loadPlugin(self, platform):
-
+	print "桌面环境：%s" %platform
+	
         if platform == "KDE":
             from Plugin.KDE import WallpaperSetter, AutoSlide
         elif platform == "Gnome-shell":
