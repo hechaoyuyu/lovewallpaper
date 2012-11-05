@@ -42,7 +42,7 @@ class Manager:
 	#判断桌面环境
 	if not self.get_output("plasma-desktop"):
 	    return "KDE"
-	if not self.get_output("gnome-panel"):
+	if not self.get_output("gnome-panel") and os.environ.get("DESKTOP_SESSION") == "gnome":
 	    return "Gnome"
 	if not self.get_output("xfce4-panel"):
 	    return "XFCE"
