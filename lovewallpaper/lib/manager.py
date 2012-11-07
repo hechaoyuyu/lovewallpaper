@@ -48,6 +48,8 @@ class Manager:
 	    return "XFCE"
 	if not self.get_output("mate-panel"):
 	    return "Mate"
+	if not self.get_output("lxpanel"):
+	    return "LXDE"
 	
     	return "Gnome-shell"
 	   
@@ -70,6 +72,8 @@ class Manager:
             from Plugin.Gnome import WallpaperSetter, AutoSlide
 	elif platform == "Mate":
 	    from Plugin.Mate import WallpaperSetter, AutoSlide
+	elif platform == "LXDE":
+	    from Plugin.LXDE import WallpaperSetter, AutoSlide
         else:
             try:
                     if os.environ['KDE_FULL_SESSION'] == 'true':

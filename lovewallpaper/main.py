@@ -58,8 +58,8 @@ class LoveWallpaper(QMainWindow):
         #设置默认窗口
        
 
-        width = int(self.app.desktop().screenGeometry(-1).width() * 0.75)
-        height = int(self.app.desktop().screenGeometry(-1).height() * 0.75)
+        width = int(self.app.desktop().screenGeometry().width() * 0.75)
+        height = int(self.app.desktop().screenGeometry().height() * 0.75)
         self.bili = height/width
         self.imagenum = 4
         self.titlenum = 2
@@ -160,7 +160,7 @@ class LoveWallpaper(QMainWindow):
   
 
         if self.width()  > 1300:
-            print self.app.desktop().width()
+            print self.app.desktop().screenGeometry().width()
             self.imagenum = 5
             self.titlenum = 3
             try:
@@ -180,7 +180,7 @@ class LoveWallpaper(QMainWindow):
 
             
         if self.width() < 1300:
-            print self.app.desktop().width()
+            print self.app.desktop().screenGeometry().width()
             self.imagenum = 4
             self.titlenum = 2
             try:
@@ -318,7 +318,8 @@ class LoveWallpaper(QMainWindow):
 
         try:
             #初始化桌面参数
-            self.My_JsonMan = JsonMan(self.app.desktop().width(), self.app.desktop().height(),self)
+            self.My_JsonMan = JsonMan(self.app.desktop().screenGeometry().width(), 
+	    self.app.desktop().screenGeometry().height(),self)
             
             #获取返回信息
             self.My_JsonMan.get_json()
