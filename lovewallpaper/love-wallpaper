@@ -72,6 +72,8 @@ if __name__ == '__main__':
             print "Wallpaper exists!"
         else:
             os.makedirs(initdownload_folder)
+    elif not os.path.exists(download_path):
+	os.makedirs(download_path)
     else:
         print "User has made a choice!"
 
